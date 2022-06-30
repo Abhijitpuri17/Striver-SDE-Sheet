@@ -2,7 +2,6 @@ import java.util.* ;
 public class Solution {
   
     public static ArrayList<ArrayList<Integer>> ratInAMaze(int[][] maze, int n) {
-      
         ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
         boolean[][] visited = new boolean[n][n] ;
         helper(ans, maze, n, 0, 0, visited) ;
@@ -37,12 +36,14 @@ public class Solution {
             return ;
         }
         
-        helper(ans, maze, n, row+1, col, visited) ;
-        helper(ans, maze, n, row-1, col, visited) ;
-        helper(ans, maze, n, row, col+1, visited) ;
-        helper(ans, maze, n, row, col-1, visited) ;
+        int[][] dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}} ;
+        
+        for (int[] dir: dirs)
+            helper(ans, maze, n, row + dir[0], col+dir[1], visited) ;
         
         visited[row][col] = false ;
   
     }
+    
+    
 }
