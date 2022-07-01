@@ -4,14 +4,14 @@ public class Solution
 {
     public static int uniqueElement(ArrayList<Integer> arr) 
     {
-        int n = arr.size() - 1 ;
+        int n = arr.size() ;
         int low = 0, high = n - 1 ;
         
         while (low <= high)
         {
-            int mid =  low + ( (high - low ) >> 1) ;
-            
-            if (mid < n - 1 && arr.get(mid) == arr.get(mid+1))
+            int mid =  (low + high)/2 ;
+                        
+            if (mid < n - 1 && arr.get(mid) - arr.get(mid+1) == 0)
             {
                 if (mid%2 == 0)
                 {
@@ -22,7 +22,7 @@ public class Solution
                     high = mid - 1 ;
                 }
             }
-            else if (mid > 0 && arr.get(mid) == arr.get(mid - 1))
+            else if (mid > 0 && arr.get(mid) - arr.get(mid - 1) == 0)
             {
                 if (mid%2 == 0)
                 {
@@ -39,7 +39,7 @@ public class Solution
             }
         }
         
-        return arr.get(low) ;
+        return -1 ;
  
     }
 }
