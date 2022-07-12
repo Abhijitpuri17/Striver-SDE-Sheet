@@ -24,6 +24,7 @@ public class Solution
         
         Queue<Pair> q = new LinkedList<>() ;
         
+        if (root != null)
         q.add(new Pair(root, 0)) ;
         
         while (!q.isEmpty())
