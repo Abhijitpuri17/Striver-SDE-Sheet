@@ -17,7 +17,7 @@
 public class Solution 
 {
     public static boolean validateBST(BinaryTreeNode<Integer> root) {
-        return check(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        return check(root, (long)-1e9-1, (long)1e9+1);
     }
     
     public static boolean check(BinaryTreeNode<Integer> node, long min, long max)
@@ -25,7 +25,7 @@ public class Solution
         if (node == null)
             return true ;
         
-        if (node.data <= min || node.data >= max)
+        if (node.data < min || node.data > max)
             return false ;
         
         return check(node.left, min, node.data) && check(node.right, node.data, max) ;
