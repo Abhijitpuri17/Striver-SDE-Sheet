@@ -10,9 +10,7 @@ public class Solution {
             activities[i] = new Activity(start.get(i), end.get(i)) ;
         }
         
-        Arrays.sort(activities, (a1, a2)->{
-            return a1.end - a2.end ;
-        }) ;
+        sort(activities) ;
         
         int ans = 0 ;
         
@@ -35,6 +33,25 @@ public class Solution {
         {
             this.start = start ;
             this.end = end ;
+        }
+    }
+    
+    static void sort(Activity[] arr)
+    {
+        ArrayList<Activity> list = new ArrayList<>() ;
+        
+        for (Activity a: arr)
+        {
+            list.add(a) ;
+        }
+        
+        Collections.sort(list, (a1, a2)->{
+            return a1.end - a2.end ;
+        }) ;
+        
+        for (int i = 0 ; i < list.size(); i++)
+        {
+            arr[i] = list.get(i) ;
         }
     }
     
